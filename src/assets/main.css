@@ -1,0 +1,65 @@
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@source not '../../docs';
+
+/* Preserve the original inclusive breakpoints and cascade order. */
+@custom-variant compact (@media (width <= 1200px));
+@custom-variant tablet (@media (width <= 1024px));
+@custom-variant stacked (@media (width <= 900px));
+@custom-variant mobile (@media (width <= 640px));
+
+@theme {
+  --color-brand: #e51837;
+  --color-ink: #1a1a1a;
+  --color-muted: #666;
+  --font-display: 'Genos', sans-serif;
+  --font-body: 'Host Grotesk', sans-serif;
+}
+
+/* Keep the existing reset instead of introducing Preflight during migration. */
+@layer base {
+  :root {
+    --gap: 74px;
+    --pad: 40px;
+  }
+
+  @media (max-width: 1024px) {
+    :root {
+      --pad: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --gap: 40px;
+      --pad: 20px;
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  body {
+    font-family: var(--font-display);
+    color: #000;
+    background: #fff;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
